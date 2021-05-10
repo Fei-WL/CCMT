@@ -134,3 +134,7 @@ experimental/*
 
 # Weights and Biases logs
 wandb/
+
+# ipynb&ipynb_checkpoints
+./.ipynb_checkpoints
+./200915FairseqGuide.ipynb
