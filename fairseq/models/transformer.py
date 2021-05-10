@@ -338,7 +338,7 @@ class TransformerEncoder(FairseqEncoder):
         self.padding_idx = embed_tokens.padding_idx
         self.max_source_positions = args.max_source_positions
 
-        self.embed_tokens = embed_tokens
+        self.transformer_embed_tokens = embed_tokens
 
         self.embed_scale = 1.0 if args.no_scale_embedding else math.sqrt(embed_dim)
 
@@ -393,7 +393,7 @@ class TransformerEncoder(FairseqEncoder):
     ):
         # embed tokens and positions
         if token_embedding is None:
-            token_embedding = self.embed_tokens(src_tokens)
+            token_embedding = self.transformer_embed_tokens(src_tokens)
         x = embed = self.embed_scale * token_embedding
         if self.embed_positions is not None:
             x = embed + self.embed_positions(src_tokens)
@@ -633,7 +633,7 @@ class TransformerDecoder(FairseqIncrementalDecoder):
         self.padding_idx = embed_tokens.padding_idx
         self.max_target_positions = args.max_target_positions
 
-        self.embed_tokens = embed_tokens
+        self.transformer_embed_tokens = embed_tokens
 
         self.embed_scale = 1.0 if args.no_scale_embedding else math.sqrt(embed_dim)
 
@@ -708,11 +708,11 @@ class TransformerDecoder(FairseqIncrementalDecoder):
             )
         elif self.share_input_output_embed:
             self.output_projection = nn.Linear(
-                self.embed_tokens.weight.shape[1],
-                self.embed_tokens.weight.shape[0],
+                self.transformer_embed_tokens.weight.shape[1],
+                self.transformer_embed_tokens.weight.shape[0],
                 bias=False,
             )
-            self.output_projection.weight = self.embed_tokens.weight
+            self.output_projection.weight = self.transformer_embed_tokens.weight
         else:
             self.output_projection = nn.Linear(
                 self.output_embed_dim, len(dictionary), bias=False
@@ -838,7 +838,7 @@ class TransformerDecoder(FairseqIncrementalDecoder):
                 positions = positions[:, -1:]
 
         # embed tokens and positions
-        x = self.embed_scale * self.embed_tokens(prev_output_tokens)
+        x = self.embed_scale * self.transformer_embed_tokens(prev_output_tokens)
 
         if self.quant_noise is not None:
             x = self.quant_noise(x)
@@ -949,7 +949,7 @@ class TransformerDecoder(FairseqIncrementalDecoder):
 
         if f"{name}.output_projection.weight" not in state_dict:
             if self.share_input_output_embed:
-                embed_out_key = f"{name}.embed_tokens.weight"
+                embed_out_key = f"{name}.transformer_embed_tokens.weight"
             else:
                 embed_out_key = f"{name}.embed_out"
             if embed_out_key in state_dict:
