@@ -15,6 +15,7 @@ import torch.nn as nn
 from fairseq import utils
 from fairseq.models import register_model, register_model_architecture
 from fairseq.models.transformer import TransformerModel
+from fairseq.models.ti2zh_transformer import Ti2Zh_TransformerModel
 from fairseq.modules.transformer_sentence_encoder import init_bert_params
 
 from .hub_interface import BARTHubInterface
@@ -24,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 
 @register_model("bart")
-class BARTModel(TransformerModel):
+class BARTModel(Ti2Zh_TransformerModel):
     __jit_unused_properties__ = ["supported_targets"]
 
     @classmethod
