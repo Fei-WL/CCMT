@@ -220,7 +220,7 @@ class BARTModel(Ti2Zh_TransformerModel):
 
         # When finetuning on translation task, remove last row of
         # embedding matrix that corresponds to mask_idx token.
-        loaded_dict_size = state_dict["encoder.embed_tokens.weight"].size(0)
+        loaded_dict_size = state_dict["encoder.ti2zh_embed_tokens.weight"].size(0)
         if (
             loaded_dict_size == len(self.encoder.dictionary) + 1
             and "<mask>" not in self.encoder.dictionary
