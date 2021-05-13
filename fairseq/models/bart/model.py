@@ -225,7 +225,7 @@ class BARTModel(Ti2Zh_TransformerModel):
             loaded_dict_size == len(self.encoder.dictionary) + 1
             and "<mask>" not in self.encoder.dictionary
         ):
-            truncate_emb("encoder.embed_tokens.weight")
+            truncate_emb("encoder.self.ti2zh_embed_tokens.weight")
             truncate_emb("decoder.embed_tokens.weight")
             truncate_emb("encoder.output_projection.weight")
             truncate_emb("decoder.output_projection.weight")
