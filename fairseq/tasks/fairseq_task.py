@@ -113,7 +113,7 @@ class FairseqTask(object):
                 multiple of 8, which is important on some hardware (e.g., Nvidia
                 Tensor Cores).
         """
-        d = Dictionary()
+        d = Dictionary(extra_special_symbols=["<BT>"])
         for filename in filenames:
             Dictionary.add_file_to_dictionary(
                 filename, d, tokenizer.tokenize_line, workers
