@@ -25,9 +25,12 @@ class Dictionary:
         pad="<pad>",
         eos="</s>",
         unk="<unk>",
-        extra_special_symbols=None,
+        extra_special_symbols=["<spy1>", "<spy2>", "<spy3>", "<spy4>", "<spy5>"],
+        mask="[MASK]",
+        bt="<BT>",
     ):
         self.bos_word, self.unk_word, self.pad_word, self.eos_word = bos, unk, pad, eos
+        self.mask, self.bt = mask, bt
         self.symbols = []
         self.count = []
         self.indices = {}
@@ -35,6 +38,7 @@ class Dictionary:
         self.pad_index = self.add_symbol(pad)
         self.eos_index = self.add_symbol(eos)
         self.unk_index = self.add_symbol(unk)
+
         if extra_special_symbols:
             for s in extra_special_symbols:
                 self.add_symbol(s)
