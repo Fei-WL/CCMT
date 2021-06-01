@@ -708,7 +708,7 @@ class TransformerDecoder(FairseqIncrementalDecoder):
             )
         elif self.share_input_output_embed:
             self.output_projection = nn.Linear(
-                self.tokens.weight.shape[1],
+                self.embed_tokens.weight.shape[1],
                 self.embed_tokens.weight.shape[0],
                 bias=False,
             )
