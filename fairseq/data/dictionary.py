@@ -26,11 +26,10 @@ class Dictionary:
         eos="</s>",
         unk="<unk>",
         extra_special_symbols=None,
-        mask="<MASK>",
         bt="<BT>",
     ):
         self.bos_word, self.unk_word, self.pad_word, self.eos_word = bos, unk, pad, eos
-        self.mask, self.bt = mask, bt
+        self.bt_word = bt
         self.symbols = []
         self.count = []
         self.indices = {}
@@ -204,6 +203,9 @@ class Dictionary:
     def unk(self):
         """Helper to get index of unk symbol"""
         return self.unk_index
+
+    def bt(self):
+        return self.bt_index
 
     @classmethod
     def load(cls, f):
