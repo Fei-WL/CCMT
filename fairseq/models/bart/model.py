@@ -339,9 +339,9 @@ def bart_large_architecture(args):
     args.adaptive_softmax_cutoff = getattr(args, "adaptive_softmax_cutoff", None)
     args.adaptive_softmax_dropout = getattr(args, "adaptive_softmax_dropout", 0)
     args.share_decoder_input_output_embed = getattr(
-        args, "share_decoder_input_output_embed", False
+        args, "share_decoder_input_output_embed", True
     )
-    args.share_all_embeddings = getattr(args, "share_all_embeddings", False)
+    args.share_all_embeddings = getattr(args, "share_all_embeddings", True)
 
     args.decoder_output_dim = getattr(
         args, "decoder_output_dim", args.decoder_embed_dim
