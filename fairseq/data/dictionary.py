@@ -26,10 +26,8 @@ class Dictionary:
         eos="</s>",
         unk="<unk>",
         extra_special_symbols=None,
-        bt="<BT>",
     ):
         self.bos_word, self.unk_word, self.pad_word, self.eos_word = bos, unk, pad, eos
-        self.bt_word = bt
         self.symbols = []
         self.count = []
         self.indices = {}
@@ -379,6 +377,22 @@ class Dictionary:
                 )
             )
 
+
+class BartDictionary(Dictionary):
+    """A mapping from symbols to consecutive integers"""
+
+    def __init__(self):
+        super.__init__()
+        self.bt_word = "<BT>"
+        self.mask_word = "<mask>"
+        self.bt_index = self.add_symbol(self.bt_word)
+        self.mask_index = self.add_symbol(self.mask_word)
+
+    def bt(self):
+        return self.bt_index
+
+    def mask(self):
+        return self.mask_index
 
 class TruncatedDictionary(object):
     def __init__(self, wrapped_dict, length):
