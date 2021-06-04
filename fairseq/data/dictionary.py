@@ -382,7 +382,7 @@ class BartDictionary(Dictionary):
     """A mapping from symbols to consecutive integers"""
 
     def __init__(self):
-        super.__init__()
+        super().__init__()
         self.bt_word = "<BT>"
         self.mask_word = "<mask>"
         self.bt_index = self.add_symbol(self.bt_word)
