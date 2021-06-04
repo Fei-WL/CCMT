@@ -137,16 +137,14 @@ class BartPretrainTask(TranslationTask):
     cfg: BartPretrainConfig
 
     def __init__(self, cfg: BartPretrainConfig, src_dict, tgt_dict):
-        super().__init__(cfg)
-        self.src_dict = src_dict
-        self.tgt_dict = tgt_dict
+        super().__init__(cfg, src_dict, tgt_dict)
 
 
-    @classmethod
-    def load_dictionary(cls, filename):
-        """Load the dictionary from the filename
-
-        Args:
-            filename (str): the filename
-        """
-        return BartDictionary.load(filename)
+    # @classmethod
+    # def load_dictionary(cls, filename):
+    #     """Load the dictionary from the filename
+    #
+    #     Args:
+    #         filename (str): the filename
+    #     """
+    #     return BartDictionary.load(filename)
