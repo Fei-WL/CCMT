@@ -25,7 +25,7 @@ logger = logging.getLogger(__name__)
 
 
 @register_model("bart")
-class BARTModel(Ti2Zh_TransformerModel):
+class BARTModel(TransformerModel):
     __jit_unused_properties__ = ["supported_targets"]
 
     @classmethod
