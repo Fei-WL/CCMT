@@ -352,15 +352,18 @@ class Trainer(object):
 
             # load model parameters
             try:
-                model_dict = self.model.state_dict()
+                # model_dict = self.model.state_dict()
                 # 1. filter out unnecessary keys
-                pretrained_dict = {k: v for k, v in state["model"].items() if k in model_dict
-                                   and v.size() == model_dict[k].size()}
+                # pretrained_dict = {k: v for k, v in state["model"].items() if k in model_dict
+                #                    and v.size() == model_dict[k].size()}
                 # 2. overwrite entries in the existing state dict
-                model_dict.update(pretrained_dict)
+                # model_dict.update(pretrained_dict)
                 # 3. load the new state dict
+                # self.model.load_state_dict(
+                #     model_dict, strict=False, model_cfg=self.cfg.model
+                # )
                 self.model.load_state_dict(
-                    model_dict, strict=False, model_cfg=self.cfg.model
+                    state["model"], strict=True, model_cfg=self.cfg.model
                 )
                 if utils.has_parameters(self.get_criterion()):
                     self.get_criterion().load_state_dict(
