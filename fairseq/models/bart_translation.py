@@ -12,6 +12,7 @@ from fairseq import utils
 from fairseq.models import (
     FairseqEncoder,
     FairseqEncoderDecoderModel,
+    BartTranslationModel,
     register_model,
     register_model_architecture,
 )
@@ -31,7 +32,7 @@ from .bart.model import BARTModel
 
 
 @register_model("bart_translation")
-class Bart_TranslationModel(FairseqEncoderDecoderModel):
+class Bart_TranslationModel(BartTranslationModel):
     """
     Transformer model from `"Attention Is All You Need" (Vaswani, et al, 2017)
     <https://arxiv.org/abs/1706.03762>`_.

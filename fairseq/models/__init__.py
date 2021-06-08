@@ -24,6 +24,7 @@ from .fairseq_model import (
     FairseqLanguageModel,
     FairseqModel,
     FairseqMultiModel,
+    BartTranslationModel,
 )
 
 
@@ -42,6 +43,7 @@ __all__ = [
     "FairseqDecoder",
     "FairseqEncoder",
     "FairseqEncoderDecoderModel",
+    "BartTranslationModel",
     "FairseqEncoderModel",
     "FairseqIncrementalDecoder",
     "FairseqLanguageModel",
