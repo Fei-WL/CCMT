@@ -27,7 +27,7 @@ from fairseq.modules.checkpoint_activations import checkpoint_wrapper
 from fairseq.modules.quant_noise import quant_noise as apply_quant_noise_
 from torch import Tensor
 from fairseq.models.transformer import TransformerDecoder as BartDecoder, Embedding
-from bart.model import BARTModel
+from .bart.model import BARTModel
 
 
 @register_model("bart_translation")
