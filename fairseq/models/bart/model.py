@@ -15,7 +15,6 @@ import torch.nn as nn
 from fairseq import utils
 from fairseq.models import register_model, register_model_architecture
 from fairseq.models.transformer import TransformerModel
-from fairseq.models.ti2zh_transformer import Ti2Zh_TransformerModel
 from fairseq.modules.transformer_sentence_encoder import init_bert_params
 
 from .hub_interface import BARTHubInterface
