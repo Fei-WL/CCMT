@@ -876,7 +876,7 @@ def bart_architecture(args):
     args.share_decoder_input_output_embed = getattr(
         args, "share_decoder_input_output_embed", True
     )
-    args.share_all_embeddings = getattr(args, "share_all_embeddings", True)
+    args.share_all_embeddings = getattr(args, "share_all_embeddings", False)
 
     args.decoder_output_dim = getattr(
         args, "decoder_output_dim", args.decoder_embed_dim
