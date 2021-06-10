@@ -474,9 +474,9 @@ class TransformerEncoder(FairseqEncoder):
                   Only populated if *return_all_hiddens* is True.
         """
         # compute padding mask
-        print("src_tokens:{}".format(src_tokens))
-        bt = self.dictionary.index("<BT>")
-        print("bt id:{}".format(bt))
+        # print("src_tokens:{}".format(src_tokens))
+        # bt = self.dictionary.index("<BT>")
+        # print("bt id:{}".format(bt))
         encoder_padding_mask = src_tokens.eq(self.padding_idx)
         has_pads = (src_tokens.device.type == "xla" or encoder_padding_mask.any())
 
